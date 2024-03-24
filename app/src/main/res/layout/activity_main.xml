@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <import type="mmcs.assignment3_calculator.viewmodel.Operation" />
+        <variable
+            name="viewModel"
+            type="mmcs.assignment3_calculator.viewmodel.Calculator" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".view.MainActivity">
+
+        <TextView
+            android:id="@+id/display"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="140dp"
+            android:text="@{viewModel.display}"
+            android:textAlignment="textEnd"
+            android:maxLines="1"
+            android:textSize="80sp"
+            app:layout_constraintBottom_toTopOf="@id/keyboard"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/keyboard"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/display">
+
+            <LinearLayout
+                android:id="@+id/keyboard_first"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/keyboard_second"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/button7"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:contextClickable="true"
+                    android:enabled="true"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_7"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(7)}"
+                    app:backgroundTint="@null"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_4"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(4)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_1"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(1)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button_point"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_point"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addPoint()}"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/keyboard_second"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/keyboard_third"
+                app:layout_constraintStart_toEndOf="@id/keyboard_first"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/button8"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_8"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(8)}"
+                    app:backgroundTint="@null"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/button5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_5"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(5)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_2"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(2)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button0"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_0"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(0)}"
+                    app:backgroundTint="@null"
+                    tools:ignore="DuplicateSpeakableTextCheck" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/keyboard_third"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/keyboard_operations"
+                app:layout_constraintStart_toEndOf="@id/keyboard_second"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/button9"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_9"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(9)}"
+                    app:backgroundTint="@null"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/button6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_6"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(6)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_3"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.addDigit(3)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button_equal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/darkGray"
+                    android:fontFamily="sans-serif-light"
+                    android:text="@string/key_equal"
+                    android:textSize="48sp"
+                    android:onClick="@{(v) -> viewModel.compute()}"
+                    app:backgroundTint="@null" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/keyboard_operations"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="#9F3333"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/keyboard_third"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/button_delete"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/lightGray"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/key_delete"
+                    android:textSize="24sp"
+                    android:onClick="@{(v) -> viewModel.reset()}"
+                    app:backgroundTint="@null"
+                    tools:ignore="NestedWeights" />
+
+                <Button
+                    android:id="@+id/button_division"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/lightGray"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/key_division"
+                    android:textSize="36sp"
+                    android:onClick="@{(v) -> viewModel.addOperation(Operation.DIV)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button_production"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/lightGray"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/key_production"
+                    android:textSize="36sp"
+                    android:onClick="@{(v) -> viewModel.addOperation(Operation.MUL)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button_subtraction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/lightGray"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/key_subtraction"
+                    android:textSize="36sp"
+                    android:onClick="@{(v) -> viewModel.addOperation(Operation.SUB)}"
+                    app:backgroundTint="@null" />
+
+                <Button
+                    android:id="@+id/button_sum"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@color/lightGray"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/key_sum"
+                    android:textSize="36sp"
+                    android:onClick="@{(v) -> viewModel.addOperation(Operation.ADD)}"
+                    app:backgroundTint="@null" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
